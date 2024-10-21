@@ -11,7 +11,7 @@ const hotelBookRouter = require('./Routes/hotelBookRoute.js')
 const visaAppRouter = require('./Routes/visaAppRoute.js')
 const flightRouter = require('./Routes/flightBooking.js')
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000;
 connectDB()
 
 

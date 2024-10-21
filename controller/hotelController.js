@@ -1,4 +1,4 @@
-const Hotel = require('../../Server/model/HotelModel'); // Adjust the path according to your file structure
+const Hotel = require('../model/HotelBooking'); // Adjust the path according to your file structure
 
 // Controller function to post hotel data
 const postHotelData = async (req, res) => {

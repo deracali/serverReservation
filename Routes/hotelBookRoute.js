@@ -1,16 +1,22 @@
 const express = require('express');
-const { createBooking, getUserBookings, getAllBookings, getHotelBookingById  } = require('../controller/hotelController')
+const {
+    createHotelBooking,
+    getUserBookings,
+    getAllBookings,
+    getHotelBookingById
+} = require('../controller/hotelBookingController'); // Ensure this path is correct
 
+const hotelBookRouter = express.Router();
 
-const hotelBookRouter = express.Router()
+// Define routes with unique paths
+hotelBookRouter.post('', createHotelBooking); // Endpoint to create a booking
+hotelBookRouter.get('/user/:userId', getUserBookings); // Endpoint to get user bookings
+hotelBookRouter.get('/', getAllBookings); // Endpoint to get all bookings
+hotelBookRouter.get('/:id', getHotelBookingById); // Endpoint to get a booking by ID
 
-hotelBookRouter.post('',createBooking)
-hotelBookRouter.get('',getUserBookings)
-hotelBookRouter.get('',getAllBookings)
-hotelBookRouter.post('',getHotelBookingById)
-
-
-
-module.exports = {
-    createBooking, getUserBookings, getAllBookings, getHotelBookingById
-  };
+// Export the router
+module.exports = {createHotelBooking,
+  getUserBookings,
+  getAllBookings,
+  getHotelBookingById
+}

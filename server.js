@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const connectDB = require('./config/mongodb.js');
 const userRouter = require('./Routes/userRoute.js');
 const hotelRouter = require('./Routes/hotelsRoute.js')
-const hotelBookRouter = require('./Routes/hotelBookRoute.js')
+const hotelBookRouter = require('./Routes/hotelBookRoute');
 const visaAppRouter = require('./Routes/visaAppRoute.js')
 const flightRouter = require('./Routes/flightBooking.js')
 const app = express()
@@ -33,7 +33,7 @@ app.use('/api/hotel/search',hotelRouter.searchHotels)
 
 
 
-app.use('/api/hotelbook/post',hotelBookRouter.createBooking)
+app.use('/api/hotelbook/post',hotelBookRouter.createHotelBooking)
 app.use('/api/hotelbook/bookingId',hotelBookRouter.getHotelBookingById)
 app.use('/api/hotelbook/userBooking',hotelBookRouter.getUserBookings)
 app.use('/api/hotelbook/allbookings',hotelBookRouter.getAllBookings)
@@ -52,7 +52,7 @@ app.use('/api/visaApp/getall',visaAppRouter.getApplications)
 
 
 
-app.use('/api/flightbook/post',flighRouter.createBooking)
+app.use('/api/flightbook/post',flightRouter.createBooking)
 app.use('/api/flightbook/userbooking/:userid',flightRouter.getUserFlightBookings)
 app.use('/api/flightbook/getall',flightRouter.getAllFlightBookings)
 app.use('/api/flightbook/getbooking/:id',flightRouter.getFlightBookingById)
@@ -349,4 +349,4 @@ app.get('/', (req,res)=>{
     res.send('API WORKING')
 })
 
-app.listen(port, ()=>console.log("Server Started", port))
+app.listen(port, ()=> console.log(`Server is running on port ${port}`))

@@ -2,7 +2,7 @@
 const VisaApplication = require('../model/visaApplication');
 
 // Create a new visa application
-exports.createApplication = async (req, res) => {
+const createApplication = async (req, res) => {
   try {
     const newApplication = new VisaApplication(req.body);
     await newApplication.save();
@@ -13,7 +13,7 @@ exports.createApplication = async (req, res) => {
 };
 
 // Get all visa applications
-exports.getApplications = async (req, res) => {
+const getApplications = async (req, res) => {
   try {
     const applications = await VisaApplication.find();
     res.status(200).json(applications);
@@ -23,7 +23,7 @@ exports.getApplications = async (req, res) => {
 };
 
 // Get a single visa application by ID
-exports.getApplicationById = async (req, res) => {
+const getApplicationById = async (req, res) => {
   try {
     const application = await VisaApplication.findById(req.params.id);
     if (!application) return res.status(404).json({ message: 'Application not found' });
@@ -34,7 +34,7 @@ exports.getApplicationById = async (req, res) => {
 };
 
 // Update a visa application
-exports.updateApplication = async (req, res) => {
+const updateApplication = async (req, res) => {
   try {
     const application = await VisaApplication.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!application) return res.status(404).json({ message: 'Application not found' });
@@ -45,7 +45,7 @@ exports.updateApplication = async (req, res) => {
 };
 
 // Delete a visa application
-exports.deleteApplication = async (req, res) => {
+const deleteApplication = async (req, res) => {
   try {
     const application = await VisaApplication.findByIdAndDelete(req.params.id);
     if (!application) return res.status(404).json({ message: 'Application not found' });
@@ -54,3 +54,6 @@ exports.deleteApplication = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+module.exports = {createApplication, getApplications,getApplicationById}

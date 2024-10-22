@@ -44,8 +44,8 @@ app.use('/api/hotelbook/allbookings',hotelBookRouter.getAllBookings)
 
 
 app.use('/api/visaApp/post',visaAppRouter.createApplication)
-app.use('/api/visaApp/:id',visaAppRouter.getApplicationById)
-app.use('/api/visaApp/getall',visaAppRouter.getApplications)
+app.use('/api/visaApp/id',visaAppRouter.getApplicationById)
+app.use('/api/visaApp/app',visaAppRouter.getApplications)
 
 
 

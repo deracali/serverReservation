@@ -4,9 +4,9 @@ const { createApplication, getApplications, getApplicationById } = require('../c
 
 const visaAppRouter = express.Router()
 
-visaAppRouter.post('',createApplication)
-visaAppRouter.get('',getApplications)
-visaAppRouter.get('',getApplicationById)
+visaAppRouter.post('/',createApplication)
+visaAppRouter.get('/getall',getApplications)
+visaAppRouter.get('/:id',getApplicationById)
 
 
 

@@ -5,9 +5,9 @@ const { createBooking, getUserFlightBookings, getAllFlightBookings,getFlightBook
 const flightbookRouter = express.Router()
 
 flightbookRouter.post('',createBooking)
-flightbookRouter.get('',getUserFlightBookings)
+flightbookRouter.get('/:userId',getUserFlightBookings)
 flightbookRouter.get('',getAllFlightBookings)
-flightbookRouter.get('',getFlightBookingById)
+flightbookRouter.get('/:id',getFlightBookingById)
 
 
 

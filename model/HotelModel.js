@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const hotelSchema = new mongoose.Schema({
     hotel_id: { type: Number },
@@ -40,8 +40,8 @@ const hotelSchema = new mongoose.Schema({
     number_of_reviews: { type: Number },
     rating_average: { type: Number },
     rates_currency: { type: String }
-}, { timestamps: true }); // This will add createdAt and updatedAt timestamps
+}, { timestamps: true });
 
 const Hotel = mongoose.model('Hotel', hotelSchema);
 
-export default Hotel;
+module.exports = Hotel;

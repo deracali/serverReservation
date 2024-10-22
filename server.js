@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const Amadeus = require('amadeus');
 const Flutterwave = require('flutterwave-node');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 const crypto = require('crypto');
 const connectDB = require('./config/mongodb.js');
@@ -10,13 +11,22 @@ const hotelRouter = require('./Routes/hotelsRoute.js')
 const hotelBookRouter = require('./Routes/hotelBookRoute');
 const visaAppRouter = require('./Routes/visaAppRoute.js')
 const flightRouter = require('./Routes/flightBooking.js')
+const axios = require('axios')
 const app = express()
 const port = process.env.PORT || 4000;
 connectDB()
 
 
 app.use(express.json())
-app.use(cors())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Allow CORS for localhost:5173
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow only this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific methods
+  credentials: true // Allow cookies if needed
+}));
 
 app.use('/api/user/register',userRouter.registerUser)
 app.use('/api/user/login',userRouter.loginUser)
@@ -56,6 +66,7 @@ app.use('/api/flightbook/post',flightRouter.createBooking)
 app.use('/api/flightbook/userbooking',flightRouter.getUserFlightBookings)
 app.use('/api/flightbook/getall',flightRouter.getAllFlightBookings)
 app.use('/api/flightbook/getbooking',flightRouter.getFlightBookingById)
+
 
 
 
@@ -202,6 +213,8 @@ app.post('/api/flights', ensureAmadeusToken, async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch flights' });
   }
 });
+
+
 
 
 

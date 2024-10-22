@@ -35,7 +35,7 @@ app.use('/api/hotel/search',hotelRouter.searchHotels)
 
 app.use('/api/hotelbook/post',hotelBookRouter.createHotelBooking)
 app.use('/api/hotelbook/:id',hotelBookRouter.getHotelBookingById)
-app.use('/api/hotelbook/userBooking',hotelBookRouter.getUserBookings)
+app.use('/api/hotelbook/userBooking/:userId',hotelBookRouter.getUserBookings)
 app.use('/api/hotelbook/allbookings',hotelBookRouter.getAllBookings)
 
 

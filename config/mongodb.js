@@ -4,8 +4,7 @@ const connectDB = async () => {
   try {
     // Establish connection to MongoDB
     await mongoose.connect(`mongodb+srv://chideracalistus:economic00@cluster0.aryyobw.mongodb.net/TicketReservation`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+     
     });
 
     console.log('MongoDB connected successfully');

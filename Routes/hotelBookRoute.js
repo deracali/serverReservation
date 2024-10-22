@@ -8,11 +8,17 @@ const {
 
 const hotelBookRouter = express.Router();
 
-// Define routes with unique paths
-hotelBookRouter.post('', createHotelBooking); // Endpoint to create a booking
-hotelBookRouter.get('', getUserBookings); // Endpoint to get user bookings
-hotelBookRouter.get('', getAllBookings); // Endpoint to get all bookings
-hotelBookRouter.get('', getHotelBookingById); // Endpoint to get a booking by ID
+
+// Endpoint to create a booking
+hotelBookRouter.post('/', createHotelBooking);
+
+// Endpoint to get all bookings
+hotelBookRouter.get('/all', getAllBookings);
+
+
+// Endpoint to get a booking by user ID
+hotelBookRouter.get('/:userId', getHotelBookingById);
+
 
 // Export the router
 module.exports = {createHotelBooking,

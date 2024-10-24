@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Allow CORS for localhost:5173
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow only this origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific methods
-  credentials: true // Allow cookies if needed
+  origin: '*', // Allow all origins (use with caution)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
 
 app.use('/api/user/register',userRouter.registerUser)

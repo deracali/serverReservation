@@ -43,9 +43,9 @@ app.use('/api/hotel/search',hotelRouter.searchHotels)
 
 
 
-app.use('/api/hotelbook/post',hotelBookRouter.createHotelBooking)
+app.use('/api/hotelbook/post',hotelBookRouter.createBooking)
 // app.use('/api/hotelbook/hotel',hotelBookRouter.getHotelBookingById)
-app.use('/api/hotelbook/userBooking',hotelBookRouter.getUserBookings)
+app.use('/api/hotelbook/deleteBooking',hotelBookRouter.deleteBooking)
 app.use('/api/hotelbook/allbookings',hotelBookRouter.getAllBookings)
 
 
@@ -62,10 +62,10 @@ app.use('/api/visaApp/app',visaAppRouter.getApplications)
 
 
 
-app.use('/api/flightbook/post',flightRouter.createBooking)
-app.use('/api/flightbook/userbooking',flightRouter.getUserFlightBookings)
+app.use('/api/flightbook/post',flightRouter.createFlightBooking)
+// app.use('/api/flightbook/userbooking',flightRouter.getUserFlightBookings)
 app.use('/api/flightbook/getall',flightRouter.getAllFlightBookings)
-app.use('/api/flightbook/getbooking',flightRouter.getFlightBookingById)
+app.use('/api/flightbook/delete',flightRouter.deleteFlightBooking)
 
 
 

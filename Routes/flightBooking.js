@@ -1,16 +1,24 @@
 const express = require('express');
-const { createBooking, getUserFlightBookings, getAllFlightBookings,getFlightBookingById  } = require('../controller/flightBookingController');
+const {  createFlightBooking,
+   getAllFlightBookings,
+   // getFlightBookingById,
+   // updateFlightBooking,
+   deleteFlightBooking,  } = require('../controller/flightBookingController');
 
 
 const flightbookRouter = express.Router()
 
-flightbookRouter.post('',createBooking)
-flightbookRouter.get('/:userId',getUserFlightBookings)
+flightbookRouter.post('',createFlightBooking)
+// flightbookRouter.get('/:userId',getUserFlightBookings)
 flightbookRouter.get('',getAllFlightBookings)
-flightbookRouter.get('/:id',getFlightBookingById)
+flightbookRouter.delete('/:id', deleteFlightBooking)
 
 
 
 module.exports = {
-   createBooking, getUserFlightBookings, getAllFlightBookings,getFlightBookingById  
+   createFlightBooking,
+   getAllFlightBookings,
+   deleteFlightBooking, 
+   // getFlightBookingById,
+   // updateFlightBooking,
   };

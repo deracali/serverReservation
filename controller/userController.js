@@ -42,13 +42,14 @@ const registerUser = async (req, res) => {
         const hardcodedJWTSecret = 'your_hardcoded_secret'; 
         const token = jwt.sign({ userId: newUser._id }, hardcodedJWTSecret);
         
-        res.json({ success: true, token, userId: newUser._id });
+        res.json({ success: true, userId: newUser._id });
 
     } catch (error) {
         console.log("Registration Error:", error);
         res.json({ success: false, message: "Registration failed", error: error.message });
     }
 }
+
 
 const loginUser = async (req, res) => {
     try {
@@ -60,10 +61,18 @@ const loginUser = async (req, res) => {
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
-        const hardcodedJWTSecret = 'your_hardcoded_secret'; 
+        const hardcodedJWTSecret = 'your_hardcoded_secret';
+
         if (isMatch) {
-            const token = jwt.sign({ userId: user._id }, hardcodedJWTSecret);
-            res.json({ success: true, token, userId: user._id });
+            // Check if the user is an admin
+            const isAdmin = user.admin || false; // Assuming isAdmin is a boolean field in your User model
+
+            const token = jwt.sign({ userId: user._id, isAdmin }, hardcodedJWTSecret);
+            res.json({ 
+                success: true, 
+                userId: user._id, 
+                isAdmin // Include admin status in the response
+            });
         } else {
             res.json({ success: false, message: "Invalid credentials" });
         }

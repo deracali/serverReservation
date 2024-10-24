@@ -14,7 +14,7 @@ const createFlightBooking = async (req, res) => {
 // Get all flight bookings
 const getAllFlightBookings = async (req, res) => {
   try {
-    const bookings = await FlightBooking.find();       // Fetch all bookings
+    const bookings = await FlightBooking.find().sort({ createdAt: -1 });;       // Fetch all bookings
     res.status(200).json(bookings);                    // Send back all bookings
   } catch (error) {
     res.status(500).json({ error: error.message });

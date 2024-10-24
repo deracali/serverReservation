@@ -20,7 +20,7 @@ const createBooking = async (req, res) => {
 // Get all bookings
 const getAllBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find(); // Fetch all bookings from the database
+    const bookings = await Booking.find().sort({ createdAt: -1 });; // Fetch all bookings from the database
     res.status(200).json({
       message: 'Bookings retrieved successfully',
       data: bookings,
